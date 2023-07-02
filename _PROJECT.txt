@@ -1,0 +1,17 @@
+- Notes + Ideas for the project
+
+
+
+- Animation:
+    - When ever numbers update (stock prices, volume, etc) you should use an animation where
+    the old number slides up to leaving from the top, and the new number slides up entering from the
+    bottom.
+    - An example of this can be found on reddit in an active thread post. When people like a post
+    it updates real time with the slide up animations.
+    - This animation would look especially good if all of the composables did it at the same time.
+
+
+- Animation:
+    - When the scanner is started, it would be cool if the icon was a guy "jogging" and when
+    clicked, He actually animates and starts jogging.
+    - An example of a runner guy icon is in the Material Design Icons.Filled.RunCircle
