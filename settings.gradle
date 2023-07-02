@@ -17,6 +17,6 @@ dependencyResolutionManagement {
 }
 
 
-rootProject.name = "sentinel-v2"
+rootProject.name = "project-stock-sentinel"
 include ':app'
 include ':lib_data'

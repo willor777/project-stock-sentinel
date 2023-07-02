@@ -145,7 +145,7 @@ private fun ScannerScreenContent(
                 FloatingActionButton(onClick = {
                     Log.d(tag, "Stop Scanner Button Pressed")
                 }) {
-                    
+
                 }
             }
 

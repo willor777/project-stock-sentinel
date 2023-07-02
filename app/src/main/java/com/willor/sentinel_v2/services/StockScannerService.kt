@@ -53,7 +53,7 @@ class StockScannerService : Service() {
         // Start foreground providing the notificationId + a Notification
         createNotificationChannel()
         startForeground(notificationId, createNotification("Scanner Running"))
-
+        startScanner()
         return START_STICKY
     }
 
@@ -63,7 +63,9 @@ class StockScannerService : Service() {
         return super.stopService(name)
     }
 
-
+    /**
+     * Stops the 'coroutineScope'
+     * */
     override fun onDestroy() {
         super.onDestroy()
         coroutineScope.cancel()
@@ -71,7 +73,7 @@ class StockScannerService : Service() {
     }
 
 
-    // TODO Add checks for version codes lower than < Oreo
+    // TODO Figure out what to do if SDK is <= Build.VERSION_CODES.O
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val chan = NotificationChannel(
@@ -111,6 +113,7 @@ class StockScannerService : Service() {
     }
 
 
+    // Posts a new notification
     private fun updateNotification(newNotification: Notification) {
         (getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
             .notify(notificationId, newNotification)
