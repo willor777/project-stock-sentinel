@@ -131,6 +131,7 @@ class DashboardViewModel @Inject constructor(
     }
 
 
+    // TODO Figure out a better way to wait for user prefs to load.
     /**
      * Waits for user prefs to load, then loads the last watchlist user selected.
      */
@@ -138,13 +139,17 @@ class DashboardViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
 
             // Wait for user prefs to load
-            while (this.isActive) {
-                if (_uiState.value.userPrefs is DataResourceState.Success) {
-                    break
-                }
-                Log.d(tag, "loadDefaultWatchlist() waiting for user prefs")
-                delay(500)
-            }
+            delay(5000)
+
+            // TODO - Note - The below code block causes an infinite loop. It continues to loop
+            //      even if user prefs load success
+//            while (this.isActive) {
+//                if (_uiState.value.userPrefs is DataResourceState.Success) {
+//                    break
+//                }
+//                Log.d(tag, "loadDefaultWatchlist() waiting for user prefs")
+//                delay(500)
+//            }
 
             // Cast userPrefs and load the watchlist last selected
             val userPrefs = (_uiState.value.userPrefs as DataResourceState.Success).data

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.willor.lib_data.domain.dataobjs.DataResourceState
 import com.willor.lib_data.domain.usecases.UseCases
+import com.willor.lib_data.utils.insertDummyTriggers
 import com.willor.sentinel_v2.presentation.scanner.scanner_components.ScannerEvent
 import com.willor.sentinel_v2.presentation.scanner.scanner_components.ScannerUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,6 +19,15 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+/* TODO
+*   - Provide way for user to change...
+*       - Scanner Strategy
+*       - Candle Interval
+*   - When the user changes either of the above, the Scanner should be notified immediately.
+*       - Maybe write a method in 'StockScannerService' (which can be called by binding to Service)
+*           which causes the Scanner to restart.
+* */
 
 @HiltViewModel
 class ScannerViewModel @Inject constructor(

@@ -14,6 +14,9 @@ class UseCases(
     val getSnrLevelsUsecase: GetSnrLevelsUsecase,
     val getUoaUsecase: GetUoaUsecase,
     val getTriggersUsecase: GetTriggersUsecase,
+    val getStockChartFlowUsecase: GetStockChartFlowUsecase,
+    val getStockChartsForAnalysisUsecase: GetStockChartsForAnalysisUsecase,
+    val saveTriggerUsecase: SaveTriggerUsecase,
     val loginUsecase: LoginUsecase,
     val registerUsecase: RegisterUsecase
 )

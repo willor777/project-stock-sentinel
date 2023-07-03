@@ -123,7 +123,7 @@ dependencies {
 
     // My Stuff
     implementation 'com.github.willor777:loading-animation-composable:1.0.0-alpha'
-    implementation 'com.github.willor777:stock-analysis-lib:1.0.1-alpha'
+    implementation 'com.github.willor777:stock-analysis-lib:1.0.12-alpha'
 
     // Paging 3
     implementation "androidx.paging:paging-compose:1.0.0-alpha17"

@@ -7,34 +7,24 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.util.Date
 
-@Composable
-fun SlideInOutAnimation(content: @Composable () -> Unit, content2: @Composable () -> Unit) {
-    var currentContent by remember { mutableStateOf(content) }
-    val transition = updateTransition(targetState = currentContent)
+// This file is used for basic tests
 
-    val enterAnim = slideInHorizontally(
-        initialOffsetX = { it },
-        animationSpec = tween(durationMillis = 300)
-    ) + fadeIn(initialAlpha = 0.3f)
 
-    val exitAnim = slideOutHorizontally(
-        targetOffsetX = { -it },
-        animationSpec = tween(durationMillis = 300)
-    ) + fadeOut()
 
-    Crossfade(targetState = currentContent, modifier = Modifier.fillMaxSize()) { content ->
-        Box(modifier = Modifier.fillMaxSize()) {
-            content.invoke()
-        }
-    }
-    Crossfade(
-        modifier = Modifier.fillMaxSize(),
-        targetState = transition.targetState,
-        animationSpec = tween(durationMillis = 300)
-    ) { content ->
-        Box(modifier = Modifier.fillMaxSize()) {
-            content.invoke()
-        }
-    }
+
+fun main() {
+    val test = "Jun 30, 2023, 8:00:00 AM"
+    val dateFormat = "MMM dd, yyyy, hh:mm:ss aa"
+    val sdf = SimpleDateFormat(dateFormat)
+
+    val date = sdf.parse(test)
+
+    println(date.time)
 }
+
+
+

@@ -18,6 +18,7 @@ import com.willor.lib_data.domain.dataobjs.responses.stock_competitors_resp.Stoc
 import com.willor.lib_data.domain.dataobjs.responses.stock_quote_resp.StockQuote
 import com.willor.lib_data.domain.dataobjs.responses.stock_snr_levels_resp.StockSnrLevels
 import com.willor.lib_data.domain.dataobjs.responses.uoa_page_resp.UoaPage
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.flow.Flow
 
 interface Repo {
@@ -26,9 +27,13 @@ interface Repo {
 
     fun loginUser(email: String, password: String): Flow<DataResourceState<LoginResponse>>
 
-    fun getStockChart(
+    fun getStockChartFlow(
         ticker: String, interval: String, periodRange: String, prepost: Boolean
     ): Flow<DataResourceState<StockChart?>>
+
+    suspend fun getStockChart(
+        ticker: String, interval: String, periodRange: String, prepost: Boolean
+    ): StockChart?
 
     fun getMajorFutures(): Flow<DataResourceState<MajorFutures?>>
 

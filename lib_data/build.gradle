@@ -70,6 +70,6 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$paging_version"
 
     // My Stuff -- Stock Analysis Lib
-    implementation 'com.github.willor777:stock-analysis-lib:1.0.1-alpha'
+    implementation 'com.github.willor777:stock-analysis-lib:1.0.12-alpha'
 
 }

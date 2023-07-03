@@ -102,7 +102,7 @@ class RepoImpl(
     }
 
     // TODO 'saveChartToCache() inside this method' is empty???!!?
-    override fun getStockChart(
+    override fun getStockChartFlow(
         ticker: String,
         interval: String,
         periodRange: String,
@@ -183,6 +183,34 @@ class RepoImpl(
         }
     }
 
+
+    override suspend fun getStockChart(
+        ticker: String,
+        interval: String,
+        periodRange: String,
+        prepost: Boolean
+    ): StockChart? {
+        try {
+
+            val chartResponse = api.getStockChart(
+                ticker, interval, periodRange, prepost, RetrofitApi.getApiKey()
+            )
+
+            if (chartResponse.isSuccessful){
+                return chartResponse.body()
+            }
+            else {
+                Log.d(tag, "getStockChart() Failed to get chart for: " +
+                        "$ticker | $interval | $periodRange | $prepost | " +
+                        "CODE: ${chartResponse.code()}")
+                return null
+            }
+
+        } catch (e: Exception) {
+            logException(tag, e)
+            return null
+        }
+    }
 
     override fun getMajorFutures()
             : Flow<DataResourceState<MajorFutures?>> {

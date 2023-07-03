@@ -16,12 +16,12 @@ import com.willor.sentinel_v2.ui.theme.MySizes
 @Composable
 fun TriggersList(
     uiStateProvider: () -> ScannerUiState,
-){
-    uiStateProvider().triggers.takeIf { it.isNotEmpty() }?.let{triggers ->
+) {
+    uiStateProvider().triggers.takeIf { it.isNotEmpty() }?.let { triggers ->
 
         Column(
             modifier = Modifier.fillMaxWidth()
-        ){
+        ) {
             Spacer(modifier = Modifier.height(MySizes.VERTICAL_CONTENT_PADDING_MEDIUM))
             ColumnLabelsRow()
             Spacer(modifier = Modifier.height(MySizes.VERTICAL_CONTENT_PADDING_MEDIUM))
@@ -37,12 +37,12 @@ fun TriggersList(
 
 
 @Composable
-private fun ColumnLabelsRow(){
+private fun ColumnLabelsRow() {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
-    ){
+    ) {
 
         Text(
             text = "Ticker",
@@ -70,19 +70,19 @@ private fun ColumnLabelsRow(){
 @Composable
 private fun TriggersLazyCol(
     triggers: List<TriggerEntity>
-){
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
             .height(500.dp)
-    ){
-        items(triggers.size){i ->
+    ) {
+        items(triggers.size) { i ->
             TriggerItem(
                 trigger = triggers[i],
                 searchTickerClick = {
                     // TODO
                 }
-                )
+            )
         }
     }
 }

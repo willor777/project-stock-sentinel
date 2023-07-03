@@ -77,6 +77,16 @@ object DiUseCases {
     }
 
     @Provides
+    fun provideGetStockChartFlowUsecase(repo: Repo): GetStockChartFlowUsecase {
+        return GetStockChartFlowUsecase(repo)
+    }
+
+    @Provides
+    fun provideGetStockChartsForAnalysisUsecase(repo: Repo): GetStockChartsForAnalysisUsecase {
+        return GetStockChartsForAnalysisUsecase(repo)
+    }
+
+    @Provides
     fun provideRegisterUseCase(repo: Repo): RegisterUsecase {
         return RegisterUsecase(repo)
     }
@@ -84,6 +94,11 @@ object DiUseCases {
     @Provides
     fun provideLoginUsecase(repo: Repo): LoginUsecase {
         return LoginUsecase(repo)
+    }
+
+    @Provides
+    fun provideSaveTriggerUsecase(repo: Repo): SaveTriggerUsecase {
+        return SaveTriggerUsecase(repo)
     }
 
     @Provides
@@ -99,14 +114,18 @@ object DiUseCases {
         options: GetOptionsOverviewUsecase,
         competitors: GetStockCompetitorsUsecase,
         snrLevels: GetSnrLevelsUsecase,
-        uoaUsecase: GetUoaUsecase,
-        triggersUsecase: GetTriggersUsecase,
+        uoa: GetUoaUsecase,
+        triggers: GetTriggersUsecase,
+        stockchartFlow: GetStockChartFlowUsecase,
+        stockchartForAnalysis: GetStockChartsForAnalysisUsecase,
+        saveTriggerUsecase: SaveTriggerUsecase,
         registerUsecase: RegisterUsecase,
         loginUsecase: LoginUsecase
     ): UseCases{
         return UseCases(
             userPrefs, saveUserPrefs, majorFutures, majorIndices, popWlOptions, popWl,
-            stockQuote, etfQuote, options, competitors, snrLevels, uoaUsecase, triggersUsecase,
+            stockQuote, etfQuote, options, competitors, snrLevels, uoa, triggers,
+            stockchartFlow, stockchartForAnalysis, saveTriggerUsecase,
             loginUsecase, registerUsecase
         )
     }
